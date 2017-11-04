@@ -3,8 +3,7 @@ jdk:
   - oraclejdk8
   
 before_install:
-    - mkdir target
-    - mv src/main/angular target/angular
+    - cp -R src/main/angular/ target/angular/
     
 deploy:
   provider: heroku
