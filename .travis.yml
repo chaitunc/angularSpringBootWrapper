@@ -4,4 +4,3 @@ jdk:
   
  script:
   - cp src\main\angular target\angular
-  - mvn install
