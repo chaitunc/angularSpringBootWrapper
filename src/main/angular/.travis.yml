@@ -1,0 +1,22 @@
+#.travis.yml
+
+language: node_js
+node_js:
+  - "6.11.4"
+
+branches:
+  only:
+    - master
+ 
+before_script:
+  - npm install -g @angular/cli
+
+script:
+  - ng build
+
+deploy:
+  provider: heroku
+  app: vast-dawn-43181
+  api_key:
+    secure: 91c57ec6-4a3a-446a-8224-524d1afc81d7 
+    
