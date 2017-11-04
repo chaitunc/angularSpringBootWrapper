@@ -1,0 +1,10 @@
+{
+  "name": "java-npm",
+  "version": "0.0.0",
+  "license": "MIT",
+  "dependencies": {
+    "@angular/cli": "1.4.5",
+    "@angular/compiler-cli": "^4.2.4"
+  },
+  
+}
