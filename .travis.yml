@@ -2,9 +2,7 @@ language: java
 jdk:
   - oraclejdk8
   
-before_install:
-    - mkdir target
-    - cp -R src/main/angular/ target/
+
     
 deploy:
   provider: heroku
