@@ -3,4 +3,5 @@ jdk:
   - oraclejdk8
   
 before_install:
-  - cp src/main/angular target/angular
+    - mkdir target
+    - mv src/main/angular target/angular
