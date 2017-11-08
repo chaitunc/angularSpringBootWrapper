@@ -1,3 +1,3 @@
 export class Info {
-     infoProp: string;
+    userName: string;
 }

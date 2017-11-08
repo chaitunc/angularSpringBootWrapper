@@ -5,5 +5,5 @@
 
 export const environment = {
   production: false,
-  serviceURL: 'https://grim-coffin-41549.herokuapp.com/'
+  serviceURL: 'http://localhost:8080/user'
 };
