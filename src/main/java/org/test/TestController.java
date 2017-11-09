@@ -22,13 +22,6 @@ public class TestController {
 	@Autowired
 	OAuth2RestOperations template;
 
-	@RequestMapping("/")
-	public PropertyModel home() {
-		PropertyModel i = new PropertyModel();
-		i.setInfoProp("Hello " + infoProperty);
-		return i;
-	}
-
 	@RequestMapping("/user")
 	public Map<String, Object> actuatorUser(Principal principal) {
 		OAuth2Authentication auth = (OAuth2Authentication) principal;

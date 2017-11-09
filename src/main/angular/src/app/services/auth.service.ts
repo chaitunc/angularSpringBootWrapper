@@ -15,35 +15,9 @@ export class AuthService {
         return localStorage.getItem('token') ? true : false;
     }
 
-    public authenticate(): Observable<boolean> {
-
-        return Observable.create(observer => {
-            this.http.get('login', {
-                headers: new HttpHeaders(
-                    {'Access-Control-Allow-Origin' : '*',
-                     'Access-Control-Allow-Methods': 'POST, GET'
-                    }) }).subscribe(
-                (res) => {
-                    observer.next(true);
-                    observer.complete();
-                },
-                (err) => {
-                    console.log(err);
-                    observer.next(true);
-                    observer.complete();
-                }
-            );
-        });
-
-    }
-
     public getUser(): Observable<User> {
         return Observable.create(observer => {
-            this.http.get<User>('user', {
-                 headers: new HttpHeaders(
-                     {'Access-Control-Allow-Origin' : '*',
-                     'Access-Control-Allow-Methods': 'POST, GET'
-                    }) }).subscribe(
+            this.http.get<User>('user').subscribe(
                 (res) => {
                     localStorage.setItem('token', res.details.tokenValue);
                     observer.next(res);

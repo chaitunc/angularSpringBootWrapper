@@ -4,7 +4,7 @@ import {HttpClientModule} from '@angular/common/http';
 
 import { AppRoutingModule  } from './app-routing.module';
 import { AppComponent } from './app.component';
-
+import { DriveComponent } from './drive/drive.component';
 import { NavbarComponent } from './navbar/navbar.component';
 
 import { AuthService } from './services/auth.service';
@@ -16,7 +16,8 @@ import { WelcomeComponent } from './welcome/welcome.component';
     AppComponent,
     NavbarComponent,
     LoginComponent,
-    WelcomeComponent
+    WelcomeComponent,
+    DriveComponent
   ],
   imports: [
     AppRoutingModule,
