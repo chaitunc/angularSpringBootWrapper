@@ -127,7 +127,7 @@
 						</goals>
 						<phase>generate-resources</phase>
 						<configuration>
-							<executable>ng</executable>
+							<executable>${basedir}\target\angular\node_modules\@angular\cli\bin\ng</executable>
 							<arguments>
 								<argument>build</argument>
 
