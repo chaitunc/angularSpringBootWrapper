@@ -9,7 +9,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 
 import { AuthService } from './services/auth.service';
 import { LoginComponent } from './login/login.component';
-
+import { GoogleService } from './services/google.service';
 import { WelcomeComponent } from './welcome/welcome.component';
 @NgModule({
   declarations: [
@@ -24,7 +24,7 @@ import { WelcomeComponent } from './welcome/welcome.component';
     BrowserModule,
     HttpClientModule
   ],
-  providers: [  AuthService],
+  providers: [  AuthService,GoogleService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
