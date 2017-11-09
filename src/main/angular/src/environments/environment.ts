@@ -5,5 +5,5 @@
 
 export const environment = {
   production: false,
-  serviceURL: 'http://localhost:8080/user'
+  serviceURL: 'http://localhost:8080/'
 };

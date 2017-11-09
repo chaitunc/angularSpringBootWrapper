@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.security.oauth2.client.OAuth2RestOperations;
+import org.springframework.security.oauth2.provider.OAuth2Authentication;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -29,9 +30,12 @@ public class TestController {
 	}
 
 	@RequestMapping("/user")
-	public Map<String, String> actuatorUser(Principal principal) {
-		Map<String, String> user = new HashMap<String, String>();
+	public Map<String, Object> actuatorUser(Principal principal) {
+		OAuth2Authentication auth = (OAuth2Authentication) principal;
+		Map<String, Object> user = new HashMap<String, Object>();
 		user.put("userName", principal.getName());
+		user.put("details", auth.getDetails());
+
 		return user;
 	}
 
