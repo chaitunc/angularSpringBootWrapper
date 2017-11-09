@@ -9,3 +9,6 @@ deploy:
   app: vast-dawn-43181
   api_key:
     secure: 91c57ec6-4a3a-446a-8224-524d1afc81d7 
+  on:
+    repo: chaitunc/angularSpringBootWrapper
+    branch: AngularGoogleAuthInOnePorg   
