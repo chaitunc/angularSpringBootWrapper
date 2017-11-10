@@ -19,7 +19,9 @@ export class AuthService {
         return Observable.create(observer => {
             this.http.get<User>('user').subscribe(
                 (res) => {
-                    localStorage.setItem('token', res.details.tokenValue);
+                    if ( res.details ) {
+                        localStorage.setItem('token', res.details.tokenValue);
+                    }
                     observer.next(res);
                     observer.complete();
                 },

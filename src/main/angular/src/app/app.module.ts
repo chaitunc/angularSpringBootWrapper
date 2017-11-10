@@ -11,6 +11,10 @@ import { AuthService } from './services/auth.service';
 import { LoginComponent } from './login/login.component';
 import { GoogleService } from './services/google.service';
 import { WelcomeComponent } from './welcome/welcome.component';
+
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { JwtInterceptor } from './services/jwt.intercetor';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -24,7 +28,12 @@ import { WelcomeComponent } from './welcome/welcome.component';
     BrowserModule,
     HttpClientModule
   ],
-  providers: [  AuthService,GoogleService],
+  providers: [  AuthService, GoogleService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: JwtInterceptor,
+      multi: true
+    }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

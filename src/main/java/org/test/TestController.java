@@ -26,9 +26,10 @@ public class TestController {
 	public Map<String, Object> actuatorUser(Principal principal) {
 		OAuth2Authentication auth = (OAuth2Authentication) principal;
 		Map<String, Object> user = new HashMap<String, Object>();
-		user.put("userName", principal.getName());
-		user.put("details", auth.getDetails());
-
+		if (principal != null) {
+			user.put("userName", principal.getName());
+			user.put("details", auth.getDetails());
+		}
 		return user;
 	}
 

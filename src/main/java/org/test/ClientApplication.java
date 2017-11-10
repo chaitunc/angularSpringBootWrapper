@@ -10,8 +10,6 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.oauth2.client.OAuth2ClientContext;
 import org.springframework.security.oauth2.client.OAuth2RestTemplate;
 import org.springframework.security.oauth2.client.resource.OAuth2ProtectedResourceDetails;
-import org.springframework.security.web.authentication.LoginUrlAuthenticationEntryPoint;
-import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 import org.springframework.web.context.request.RequestContextListener;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
@@ -34,25 +32,9 @@ public class ClientApplication extends WebSecurityConfigurerAdapter {
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 
-		http
-				// starts authorizing configurations
-				.authorizeRequests()
-				// ignore the "/" and "/index.html"
-				.antMatchers("/", "/**.html", "/**.js").permitAll()
-				// authenticate all remaining URLS
-				.anyRequest().fullyAuthenticated()//
-				.and()//
-				// setting the logout URL "/logout" - default logout URL
-				.logout()//
-				.logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
-				// after successful logout the application will redirect to "/"
-				// path
-				.logoutSuccessUrl("/")//
-				.permitAll()//
-				.and()//
-				.exceptionHandling().authenticationEntryPoint(new LoginUrlAuthenticationEntryPoint("/login")).and()
-				.csrf()//
-				.disable().cors();
+		http.csrf().disable().antMatcher("/**").authorizeRequests()
+				.antMatchers("/", "/*.js", "/*.map", "/index.html", "/user").permitAll().anyRequest().authenticated()
+				.and().cors();
 	}
 
 	@Bean
