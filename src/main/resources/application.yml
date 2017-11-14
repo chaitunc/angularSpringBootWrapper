@@ -15,11 +15,11 @@ zuul:
         auth-service-redirect:
             path: /api/auth/**
             sensitiveHeaders:
-            url: http://knallani-1:8090/auth/
+            url: https://grim-coffin-41549.herokuapp.com/auth/
         auth-service:
             path: /api/**
             sensitiveHeaders:
-            url: http://knallani-1:8090/auth/
+            url: https://grim-coffin-41549.herokuapp.com/auth/
     addHostHeader: true
 
 ribbon:
