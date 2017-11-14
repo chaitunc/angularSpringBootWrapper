@@ -13,13 +13,13 @@ zuul:
     ignoredServices: '*'
     routes:
         auth-service-redirect:
-            path: /api/auth/**
+            path: /auth/**
             sensitiveHeaders:
-            url: https://grim-coffin-41549.herokuapp.com/auth/
+            url: https://grim-coffin-41549.herokuapp.com/
         auth-service:
             path: /api/**
             sensitiveHeaders:
-            url: https://grim-coffin-41549.herokuapp.com/auth/
+            url: https://grim-coffin-41549.herokuapp.com/
     addHostHeader: true
 
 ribbon:
