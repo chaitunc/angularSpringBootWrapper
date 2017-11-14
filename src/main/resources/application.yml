@@ -2,7 +2,8 @@ logging:
   file: app.log
   path: /
   level:
-    root: DEBUG
+    org.apache.tomcat.util.net.NioEndpoint: INFO
+    root: TRACE
 
 management:
     security:
@@ -18,8 +19,9 @@ zuul:
         auth-service:
             path: /api/**
             url: https://grim-coffin-41549.herokuapp.com/
-    addHostHeader: true
 
 ribbon:
   eureka:
     enabled: false
+  restclient:
+    enabled: true
