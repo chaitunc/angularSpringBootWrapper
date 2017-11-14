@@ -13,7 +13,7 @@ zuul:
     ignoredServices: '*'
     routes:
         auth-service-redirect:
-            path: /auth/**
+            path: /login
             sensitiveHeaders:
             url: https://grim-coffin-41549.herokuapp.com/
         auth-service:
