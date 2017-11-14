@@ -16,6 +16,7 @@ zuul:
             path: /login
             sensitiveHeaders:
             url: https://grim-coffin-41549.herokuapp.com/
+            stripPrefix: false
         auth-service:
             path: /api/**
             sensitiveHeaders:
