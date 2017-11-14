@@ -3,7 +3,7 @@ logging:
   path: /
   level:
     org.apache.tomcat.util.net.NioEndpoint: INFO
-    root: TRACE
+    root: DEBUG
 
 management:
     security:
@@ -15,9 +15,11 @@ zuul:
     routes:
         auth-service-redirect:
             path: /login
+            sensitiveHeaders:
             url: https://grim-coffin-41549.herokuapp.com/login
         auth-service:
             path: /api/**
+            sensitiveHeaders:
             url: https://grim-coffin-41549.herokuapp.com/
 
 ribbon:
