@@ -21,6 +21,7 @@ zuul:
             path: /api/**
             sensitiveHeaders:
             url: https://grim-coffin-41549.herokuapp.com/
+     addHostHeader: true
 
 ribbon:
   eureka:
