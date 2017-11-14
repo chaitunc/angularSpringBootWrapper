@@ -12,6 +12,10 @@ export class LoginComponent implements OnInit {
     constructor(private authSvc: AuthService) { }
 
     ngOnInit() {
+
+    }
+
+    public getUser(): void {
         this.authSvc.getUser().subscribe(
             (resp) => {
                 this.userInfo = resp;

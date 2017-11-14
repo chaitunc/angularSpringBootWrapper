@@ -11,6 +11,6 @@ export class GoogleService {
     constructor(private http: HttpClient) { }
 
     public getDriveInfo(): Observable<Driveinfo> {
-        return this.http.get<Driveinfo>('user/driveInfo');
+        return this.http.get<Driveinfo>('/api/user/driveInfo');
     }
 }

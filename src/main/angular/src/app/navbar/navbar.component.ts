@@ -13,6 +13,22 @@ export class NavbarComponent implements OnInit {
     constructor(private authSvc: AuthService, private router: Router) { }
 
     ngOnInit() {
+        this.isAuthenticated().subscribe(
+            (res) => {
+                if(res){
+                    this.router.navigate(['home']);
+                }
+            });
+    }
+
+    public isAuthenticated(): Observable<boolean> {
+       return  Observable.of(this.authSvc.isUserAuthenticated());
+    }
+
+    /**
+     * getuser
+    */
+    public getuser(): void {
         this.authSvc.getUser().subscribe(
             (resp) => {
                 console.log(resp);
@@ -28,9 +44,4 @@ export class NavbarComponent implements OnInit {
             }
         );
     }
-
-    public isAuthenticated(): Observable<boolean> {
-       return  Observable.of(this.authSvc.isUserAuthenticated());
-    }
-
 }

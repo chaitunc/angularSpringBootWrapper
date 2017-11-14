@@ -5,7 +5,7 @@ import {  WelcomeComponent } from './welcome/welcome.component';
 
 const appRoutes: Routes = [
     { path: '', component : WelcomeComponent, pathMatch: 'full' },
-    { path: 'user', component : LoginComponent, pathMatch: 'full' },
+    { path: 'home', component : LoginComponent, pathMatch: 'full' },
     { path: 'logout', redirectTo: '' , pathMatch: 'full' }
 ];
 
