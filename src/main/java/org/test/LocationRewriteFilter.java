@@ -120,6 +120,7 @@ public class LocationRewriteFilter extends ZuulFilter {
 	}
 
 	private Pair<String, String> customHeader(RequestContext ctx) {
+		System.out.println("custom header" + ctx.getResponse().getHeader(CUSTOM_HEADER));
 		if (ctx.getZuulResponseHeaders() != null) {
 			for (Pair<String, String> pair : ctx.getZuulResponseHeaders()) {
 				System.out.println("header " + pair.first());
