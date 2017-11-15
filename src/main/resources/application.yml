@@ -15,11 +15,11 @@ zuul:
     routes:
         auth-service-redirect:
             path: /login
-            sensitiveHeaders: CUSTOM_HEADER
+            sensitiveHeaders:
             url: https://grim-coffin-41549.herokuapp.com/login
         auth-service:
             path: /api/**
-            sensitiveHeaders: CUSTOM_HEADER
+            sensitiveHeaders:
             url: https://grim-coffin-41549.herokuapp.com/
     
 ribbon:
