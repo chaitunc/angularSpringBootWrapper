@@ -9,7 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.netflix.zuul.filters.Route;
 import org.springframework.cloud.netflix.zuul.filters.RouteLocator;
 import org.springframework.cloud.netflix.zuul.filters.ZuulProperties;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.server.ServletServerHttpRequest;
 import org.springframework.util.StringUtils;
 import org.springframework.web.util.UriComponents;
@@ -36,7 +35,7 @@ public class LocationRewriteFilter extends ZuulFilter {
 	@Autowired
 	private RouteLocator routeLocator;
 
-	private static final String LOCATION_HEADER = "Location";
+	private static final String CUSTOM_HEADER = "CUSTOM_HEADER";
 
 	public LocationRewriteFilter() {
 	}
@@ -59,8 +58,8 @@ public class LocationRewriteFilter extends ZuulFilter {
 	@Override
 	public boolean shouldFilter() {
 		RequestContext ctx = RequestContext.getCurrentContext();
-		int statusCode = ctx.getResponseStatusCode();
-		return HttpStatus.valueOf(statusCode).is3xxRedirection();
+		Pair<String, String> lh = customHeader(ctx);
+		return lh != null ? true : false;
 	}
 
 	@Override
@@ -69,7 +68,7 @@ public class LocationRewriteFilter extends ZuulFilter {
 		Route route = routeLocator.getMatchingRoute(urlPathHelper.getPathWithinApplication(ctx.getRequest()));
 
 		if (route != null) {
-			Pair<String, String> lh = locationHeader(ctx);
+			Pair<String, String> lh = customHeader(ctx);
 			if (lh != null) {
 				String location = lh.second();
 				URI originalRequestUri = UriComponentsBuilder
@@ -120,10 +119,10 @@ public class LocationRewriteFilter extends ZuulFilter {
 		return (StringUtils.hasText(route.getPrefix()));
 	}
 
-	private Pair<String, String> locationHeader(RequestContext ctx) {
+	private Pair<String, String> customHeader(RequestContext ctx) {
 		if (ctx.getZuulResponseHeaders() != null) {
 			for (Pair<String, String> pair : ctx.getZuulResponseHeaders()) {
-				if (pair.first().equals(LOCATION_HEADER)) {
+				if (pair.first().equals(CUSTOM_HEADER)) {
 					return pair;
 				}
 			}
