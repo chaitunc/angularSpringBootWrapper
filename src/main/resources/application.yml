@@ -1,0 +1,29 @@
+logging:
+  file: app.log
+  path: /
+  level:
+    org.apache.tomcat.util.net.NioEndpoint: INFO
+    root: DEBUG
+
+management:
+    security:
+        enabled : false
+
+
+zuul:
+    ignoredServices: '*'
+    routes:
+        auth-service-redirect:
+            path: /login
+            sensitiveHeaders:
+            url: https://grim-coffin-41549.herokuapp.com/login
+        auth-service:
+            path: /api/**
+            sensitiveHeaders:
+            url: https://grim-coffin-41549.herokuapp.com/
+    
+ribbon:
+  eureka:
+    enabled: false
+  restclient:
+    enabled: true
