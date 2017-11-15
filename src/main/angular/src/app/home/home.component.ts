@@ -3,10 +3,10 @@ import { AuthService } from '../services/auth.service';
 import { User } from '../models/user';
 
 @Component({
-    selector: 'app-login',
-    templateUrl: 'login.component.html'
+    selector: 'app-home',
+    templateUrl: 'home.component.html'
 })
-export class LoginComponent implements OnInit {
+export class HomeComponent implements OnInit {
 
     userInfo: User;
     constructor(private authSvc: AuthService) { }

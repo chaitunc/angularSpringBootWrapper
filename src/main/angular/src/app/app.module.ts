@@ -8,7 +8,7 @@ import { DriveComponent } from './drive/drive.component';
 import { NavbarComponent } from './navbar/navbar.component';
 
 import { AuthService } from './services/auth.service';
-import { LoginComponent } from './login/login.component';
+import { HomeComponent } from './home/home.component';
 import { GoogleService } from './services/google.service';
 import { WelcomeComponent } from './welcome/welcome.component';
 
@@ -19,7 +19,7 @@ import { JwtInterceptor } from './services/jwt.intercetor';
   declarations: [
     AppComponent,
     NavbarComponent,
-    LoginComponent,
+    HomeComponent,
     WelcomeComponent,
     DriveComponent
   ],
