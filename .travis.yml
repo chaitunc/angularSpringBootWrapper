@@ -15,7 +15,7 @@ branches:
     
 deploy:
   provider: heroku
-  app: vast-dawn-43181
+  app: pdb-gateway
   api_key:
     secure: 91c57ec6-4a3a-446a-8224-524d1afc81d7 
   
