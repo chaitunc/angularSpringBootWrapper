@@ -16,7 +16,7 @@
 	<properties>
 		<!-- The main class to start by executing java -jar -->
 		<java.version>1.8</java.version>
-		<start-class>org.test.ClientApplication</start-class>
+		<start-class>org.pdb.PDBGateway</start-class>
 	</properties>
 	<dependencyManagement>
 		<dependencies>
