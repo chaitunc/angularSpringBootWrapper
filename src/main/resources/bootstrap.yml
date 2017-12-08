@@ -7,3 +7,10 @@ spring:
       fail-fast: true
       password: ${config_server_secret}
       username: user
+      
+---
+spring:
+  profiles: local
+  cloud:
+    config:
+      uri: http://localhost:8080

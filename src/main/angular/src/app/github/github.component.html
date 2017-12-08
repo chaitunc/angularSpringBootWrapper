@@ -1,0 +1,11 @@
+<h3>GitHub Information:</h3>
+<p>Summrary informatin from github - next thing to try - graphql</p>
+
+<div class="row" >
+  <div class="col-4">{{githubInfo.login}}</div>
+  <div class="col-4">{{githubInfo.url}}</div>
+  <div class="col-4">more info</div>
+</div>
+<div *ngIf="!githubInfo">
+  <a class="nav-link" href="pdb-gateway/login/github" >Login with github<span class="sr-only">(current)</span></a>
+</div>

@@ -13,6 +13,7 @@ export class HomeComponent implements OnInit {
 
     ngOnInit() {
         this.getUser();
+
     }
 
     public getUser(): void {
@@ -24,6 +25,8 @@ export class HomeComponent implements OnInit {
                 console.log(error);
             }
         );
+
+       
     }
 
 

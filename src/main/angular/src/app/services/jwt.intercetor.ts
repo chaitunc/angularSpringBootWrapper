@@ -1,24 +1,19 @@
-import {HttpInterceptor, HttpRequest, HttpHandler, HttpEvent, HttpResponse, HttpErrorResponse } from '@angular/common/http';
-import 'rxjs/add/operator/do';
+import {HttpInterceptor, HttpRequest, HttpHandler, HttpEvent } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
-import { Router, ActivatedRoute, ParamMap } from '@angular/router';
+import { TokenService } from './token.service';
 
 export class JwtInterceptor implements HttpInterceptor {
-  constructor() {}
+  constructor(private tokenSvc: TokenService) {}
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
 
-    return next.handle(request).do((event: HttpEvent<any>) => {
-      if (event instanceof HttpResponse) {
-        console.log(event);
-      }
-    }, (err: any) => {
-      if (err instanceof HttpErrorResponse) {
-        if (err.status === 401) {
-          // redirect to the login route
-          // or show a modal
+    if (this.tokenSvc.isUserAuthenticated()) {
+      request = request.clone({
+        setHeaders: {
+          Authorization: `Bearer ${this.tokenSvc.getToken()}`
         }
-        console.log(err);
-      }
-    });
+      });
+    }
+
+    return next.handle(request);
   }
 }

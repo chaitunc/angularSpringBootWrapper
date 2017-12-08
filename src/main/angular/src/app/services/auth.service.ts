@@ -15,9 +15,13 @@ export class AuthService {
         return localStorage.getItem('token') ? true : false;
     }
 
+    public getToken(): string {
+        return localStorage.getItem('token');
+    }
+
     public getUser(): Observable<User> {
         return Observable.create(observer => {
-            this.http.get<User>('/api/me').subscribe(
+            this.http.get<User>('/pdb-gateway/user').subscribe(
                 (res) => {
                     if ( res.details ) {
                         localStorage.setItem('token', res.details.tokenValue);
@@ -35,6 +39,7 @@ export class AuthService {
 
     }
 
+    
 
 
 }
