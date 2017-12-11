@@ -21,7 +21,7 @@ export class AuthService {
 
     public getUser(): Observable<User> {
         return Observable.create(observer => {
-            this.http.get<User>('/pdb-gateway/user').subscribe(
+            this.http.get<User>('/user').subscribe(
                 (res) => {
                     if ( res.details ) {
                         localStorage.setItem('token', res.details.tokenValue);
