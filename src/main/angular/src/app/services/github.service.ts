@@ -11,6 +11,6 @@ export class GithubService {
     constructor(private http: HttpClient) { }
 
     public getGithubInfo(): Observable<Githubinfo> {
-        return this.http.get<Githubinfo>('/pdb-gateway/api-github/user');
+        return this.http.get<Githubinfo>('/api-github/user');
     }
 }
