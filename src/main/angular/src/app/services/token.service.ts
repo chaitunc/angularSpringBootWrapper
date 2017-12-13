@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-
+import { tokenNotExpired } from 'angular2-jwt';
 
 @Injectable()
 export class TokenService {
@@ -7,13 +7,11 @@ export class TokenService {
     constructor() { }
 
     isUserAuthenticated(): boolean {
-        return localStorage.getItem('token') ? true : false;
+        return tokenNotExpired('token');
     }
 
     public getToken(): string {
         return localStorage.getItem('token');
     }
-
-
 
 }

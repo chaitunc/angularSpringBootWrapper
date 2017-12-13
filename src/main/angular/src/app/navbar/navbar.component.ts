@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService  } from '../services/auth.service';
+import { TokenService } from '../services/token.service';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/of';
 import { Router } from '@angular/router';
@@ -10,7 +11,7 @@ import { Router } from '@angular/router';
 })
 export class NavbarComponent implements OnInit {
 
-    constructor(private authSvc: AuthService, private router: Router) { }
+    constructor(private authSvc: AuthService, private router: Router, private tokenSvc: TokenService) { }
 
     ngOnInit() {
         this.isAuthenticated().subscribe(
@@ -22,7 +23,7 @@ export class NavbarComponent implements OnInit {
     }
 
     public isAuthenticated(): Observable<boolean> {
-       return  Observable.of(this.authSvc.isUserAuthenticated());
+       return  Observable.of(this.tokenSvc.isUserAuthenticated());
     }
 
     /**

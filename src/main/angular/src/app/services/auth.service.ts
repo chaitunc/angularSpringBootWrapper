@@ -5,19 +5,14 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 import { User } from '../models/user';
+import { tokenNotExpired } from 'angular2-jwt';
 
 @Injectable()
 export class AuthService {
 
     constructor(private http: HttpClient) { }
 
-    isUserAuthenticated(): boolean {
-        return localStorage.getItem('token') ? true : false;
-    }
 
-    public getToken(): string {
-        return localStorage.getItem('token');
-    }
 
     public getUser(): Observable<User> {
         return Observable.create(observer => {
@@ -38,8 +33,6 @@ export class AuthService {
         });
 
     }
-
-    
 
 
 }

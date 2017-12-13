@@ -13,10 +13,11 @@ buildNumber.properties
 
 
 # compiled output
-/dist
+**/dist
 /tmp
 /out-tsc
 /target
+/logs
 
 # dependencies
 **/node_modules

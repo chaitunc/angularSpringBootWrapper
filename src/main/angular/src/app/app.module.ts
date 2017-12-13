@@ -10,6 +10,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 
 import { AuthService } from './services/auth.service';
 import { TokenService } from './services/token.service';
+import { AuthGuard } from './services/auth.guard';
 import { HomeComponent } from './home/home.component';
 import { GoogleService } from './services/google.service';
 import { GithubService } from './services/github.service';
@@ -32,7 +33,7 @@ import { JwtInterceptor } from './services/jwt.intercetor';
     BrowserModule,
     HttpClientModule
   ],
-  providers: [  AuthService, GoogleService, GithubService, TokenService,
+  providers: [  AuthService, GoogleService, GithubService, AuthGuard, TokenService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: JwtInterceptor,

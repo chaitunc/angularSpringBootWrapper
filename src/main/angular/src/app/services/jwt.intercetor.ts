@@ -3,13 +3,13 @@ import { Observable } from 'rxjs/Observable';
 import { TokenService } from './token.service';
 
 export class JwtInterceptor implements HttpInterceptor {
-  constructor(private tokenSvc: TokenService) {}
+  constructor(private tokenService: TokenService) {}
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
 
-    if (this.tokenSvc.isUserAuthenticated()) {
+    if (this.tokenService.isUserAuthenticated()) {
       request = request.clone({
         setHeaders: {
-          Authorization: `Bearer ${this.tokenSvc.getToken()}`
+          Authorization: `Bearer ${this.tokenService.getToken()}`
         }
       });
     }
